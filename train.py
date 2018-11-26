@@ -141,7 +141,7 @@ def validate(model, criterion, valset, iteration, batch_size, n_gpus,
             y_pred = model(x)
             loss = criterion(y_pred, y)
             reduced_val_loss = reduce_tensor(loss.data, n_gpus)[0] \
-                if distributed_run else loss.data[0]
+                if distributed_run else loss.item()
             val_loss += reduced_val_loss
         val_loss = val_loss / (i + 1)
 
@@ -216,7 +216,7 @@ def train(output_directory, log_directory, checkpoint_path, warm_start, n_gpus,
             y_pred = model(x)
             loss = criterion(y_pred, y)
             reduced_loss = reduce_tensor(loss.data, n_gpus)[0] \
-                if hparams.distributed_run else loss.data[0]
+                if hparams.distributed_run else loss.item()
 
             if hparams.fp16_run:
                 optimizer.backward(loss)

@@ -1,0 +1,2 @@
+FROM   nvcr.io/nvidia/pytorch:18.06-py3
+RUN  pip install  cython  numpy  scipy matplotlib  librosa==0.6.0  inflect==0.2.5 Unidecode==1.0.22 tensorflow  tensorboardX jupyter

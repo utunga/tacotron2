@@ -28,6 +28,10 @@ class Tacotron2Logger(SummaryWriter):
 
         # plot alignment, mel target and predicted, gate target and predicted
         idx = random.randint(0, alignments.size(0) - 1)
+        print(alignments[idx].data)
+        print(alignments[idx].data.cpu())
+        print(alignments[idx].data.cpu().numpy())
+        
         self.add_image(
             "alignment",
             plot_alignment_to_numpy(alignments[idx].data.cpu().numpy().T),

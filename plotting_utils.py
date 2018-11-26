@@ -22,7 +22,6 @@ def plot_alignment_to_numpy(alignment, info=None):
     plt.xlabel(xlabel)
     plt.ylabel('Encoder timestep')
     plt.tight_layout()
-
     fig.canvas.draw()
     data = save_figure_to_numpy(fig)
     plt.close()
